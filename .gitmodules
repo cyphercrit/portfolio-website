@@ -1,0 +1,6 @@
+[submodule "graphing-derivatives"]
+	path = graphing-derivatives
+	url = https://github.com/cyphercrit/graphing-derivatives
+[submodule "projects/graphing-derivatives"]
+	path = projects/graphing-derivatives
+	url = https://github.com/cyphercrit/graphing-derivatives
