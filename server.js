@@ -4,7 +4,7 @@ import homeRoute from "./app/routes/home.js"
 import projectsRoute from "./app/routes/projects.js"
 
 const app = express();
-const PORT = 3000;
+const PORT = 80;
 
 app.use(express.static("public")); // allows public access for css, assets, etc
 
@@ -16,4 +16,4 @@ app.use("/projects", projectsRoute);
 
 app.listen(PORT, () => {
     console.log(`Website is running on port ${PORT}`)
-});
+})
