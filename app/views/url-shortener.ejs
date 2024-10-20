@@ -55,6 +55,10 @@
                     const data = await response.json();
                     const shortenedUrl = "https://short.jurkovski.com/" + data.short_url;
                     shortenedUrlElement.textContent = shortenedUrl;
+                } else if (response.status === 400) { // checks for specific error
+                    const errorData = await response.json();
+                    console.error('Error:', errorData.error);
+                    shortenedUrlElement.textContent = errorData.error;
                 } else {
                     console.error('Failed to shorten URL');
                     shortenedUrlElement.textContent = "Error shortening URL.";

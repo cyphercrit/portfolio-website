@@ -19,7 +19,11 @@ app.post("/shorten", async (req, res) => {
         });
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: "Failed to shorten URL" });
+        if (error.response && error.response.data && error.response.data.error) { // checks for more specific error
+            res.status(400).json({ error: error.response.data.error })
+        } else {
+            res.status(500).json({ error: "Failed to shorten URL" }); // generic error
+        }
     }
 });
 
