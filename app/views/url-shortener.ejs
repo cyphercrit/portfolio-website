@@ -19,6 +19,7 @@
     <div class="output-container">
         <div id="shortened-url" class="output-box">Your shortened URL will appear here</div>
         <button id="copy-btn" class="copy-btn">Copy</button>
+        <div id="loading-spinner" style="display: none;">Loading...</div>
     </div>
 
     <footer>
@@ -29,6 +30,18 @@
         document.getElementById('shorten-form').addEventListener('submit', async (event) => {
             event.preventDefault();
             const url = document.getElementById('url-input').value;
+            const shortenedUrlElement = document.getElementById('shortened-url');
+            
+            // shows the loading message with animation
+            let loading = true;
+            let dotCount = 2;
+            const loadingInterval = setInterval(() => {
+                if (loading) { // loading animation logic
+                    shortenedUrlElement.textContent = 'Loading' + '.'.repeat(dotCount);
+                    dotCount = dotCount === 2 ? 3 : 2;
+                }
+            }, 500);
+    
             try {
                 const response = await fetch('/projects/url-shortener/shorten', {
                     method: 'POST',
@@ -37,24 +50,32 @@
                     },
                     body: JSON.stringify({ url })
                 });
+
                 if (response.ok) {
                     const data = await response.json();
                     const shortenedUrl = "https://short.jurkovski.com/" + data.short_url;
-                    document.getElementById('shortened-url').textContent = shortenedUrl;
+                    shortenedUrlElement.textContent = shortenedUrl;
                 } else {
                     console.error('Failed to shorten URL');
-                    document.getElementById('shortened-url').textContent = "Error shortening URL.";
+                    shortenedUrlElement.textContent = "Error shortening URL.";
                 }
             } catch (error) {
                 console.error('Error:', error);
-                document.getElementById('shortened-url').textContent = "An error occurred.";
+                shortenedUrlElement.textContent = "An error occurred.";
+            } finally {
+                loading = false; // stops loading animation
+                clearInterval(loadingInterval);
             }
         });
     
         document.getElementById('copy-btn').addEventListener('click', () => {
             const shortenedUrl = document.getElementById('shortened-url').textContent;
-            if (shortenedUrl && shortenedUrl !== "Your shortened URL will appear here") {
-                navigator.clipboard.writeText(shortenedUrl)
+            if (shortenedUrl && shortenedUrl !== "Loading.." && shortenedUrl !== "Loading...") {
+                navigator.clipboard.writeText(shortenedUrl).then(() => {
+                    console.log('URL copied to clipboard');
+                }).catch(err => {
+                    console.error('Failed to copy URL:', err);
+                });
             }
         });
     </script>
