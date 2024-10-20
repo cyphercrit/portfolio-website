@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/url-shortener-styles.css?=2.0">
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+
+    <div class="input-container">
+        <form id="shorten-form">
+            <input type="text" id="url-input" placeholder="Enter a URL to shorten" required>
+            <button type="submit">Shorten</button>
+        </form>
+    </div>
+
+    <div class="output-container">
+        <div id="shortened-url" class="output-box">Your shortened URL will appear here</div>
+        <button id="copy-btn" class="copy-btn">Copy</button>
+    </div>
+
+    <footer>
+        <p>Copyright &copy; 2024 Caden Jurkovski.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('shorten-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const url = document.getElementById('url-input').value;
+            try {
+                const response = await fetch('/projects/url-shortener/shorten', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    const shortenedUrl = "https://short.jurkovski.com/" + data.short_url;
+                    document.getElementById('shortened-url').textContent = shortenedUrl;
+                } else {
+                    console.error('Failed to shorten URL');
+                    document.getElementById('shortened-url').textContent = "Error shortening URL.";
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('shortened-url').textContent = "An error occurred.";
+            }
+        });
+    
+        document.getElementById('copy-btn').addEventListener('click', () => {
+            const shortenedUrl = document.getElementById('shortened-url').textContent;
+            if (shortenedUrl && shortenedUrl !== "Your shortened URL will appear here") {
+                navigator.clipboard.writeText(shortenedUrl)
+            }
+        });
+    </script>
+</body>
+</html>
