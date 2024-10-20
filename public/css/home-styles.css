@@ -357,6 +357,12 @@ ul {
     max-width: 70%;
     max-height: 70%;
   }
+
+  .project-img2 {
+    border-radius: 2rem;
+    max-width: 53%;
+    max-height: 53%;
+  }
   
   .project-title {
     margin: 1rem;
