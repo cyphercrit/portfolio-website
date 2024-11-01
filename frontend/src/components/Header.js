@@ -3,14 +3,14 @@ import styles from './Header.module.css';
 
 function Header() {
   function toggleMenu() {
-    const menu = document.querySelector(`.${styles.menu_links}`);
-    const icon = document.querySelector(`.${styles.hamburger_icon}`);
+    const menu = document.querySelector(`.${styles.menuLinks}`);
+    const icon = document.querySelector(`.${styles.hamburgerIcon}`);
     menu.classList.toggle(styles.open);
     icon.classList.toggle(styles.open);
   }
 
   useEffect(() => {
-    const icon = document.querySelector(`.${styles.hamburger_icon}`);
+    const icon = document.querySelector(`.${styles.hamburgerIcon}`);
     if (icon) {
       icon.addEventListener("click", toggleMenu);
     }
@@ -24,26 +24,26 @@ function Header() {
 
   return (
     <>
-      <nav id="desktop-nav" className={styles.desktop_nav}>
+      <nav id="desktop-nav" className={styles.desktopNav}>
         <div className={styles.logo}>Caden Jurkovski</div>
-        <ul className={styles.nav_links}>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul className={styles.navLinks}>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#projects">Projects</a></li>
+          <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
-      <nav id="hamburger-nav" className={styles.hamburger_nav}>
+      <nav id="hamburger-nav" className={styles.hamburgerNav}>
         <div className={styles.logo}>Caden Jurkovski</div>
-        <div className={styles.hamburger_menu}>
-          <div className={styles.hamburger_icon}>
+        <div className={styles.hamburgerMenu}>
+          <div className={styles.hamburgerIcon}>
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div className={styles.menu_links}>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <div className={styles.menuLinks}>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
           </div>
         </div>
       </nav>
