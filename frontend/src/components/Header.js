@@ -1,25 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import styles from './Header.module.css';
 
 function Header() {
-  function toggleMenu() {
-    const menu = document.querySelector(`.${styles.menuLinks}`);
-    const icon = document.querySelector(`.${styles.hamburgerIcon}`);
-    menu.classList.toggle(styles.open);
-    icon.classList.toggle(styles.open);
-  }
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const icon = document.querySelector(`.${styles.hamburgerIcon}`);
-    if (icon) {
-      icon.addEventListener("click", toggleMenu);
-    }
-
-    return () => {
-      if (icon) {
-        icon.removeEventListener("click", toggleMenu);
-      }
-    };
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
   }, []);
 
   return (
@@ -35,12 +21,15 @@ function Header() {
       <nav className={styles.hamburgerNav}>
         <div className={styles.logo}>Caden Jurkovski</div>
         <div className={styles.hamburgerMenu}>
-          <div className={styles.hamburgerIcon}>
+          <div 
+            className={`${styles.hamburgerIcon} ${isMenuOpen ? styles.open : ''}`}
+            onClick={toggleMenu}
+          >
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div className={styles.menuLinks}>
+          <div className={`${styles.menuLinks} ${isMenuOpen ? styles.open : ''}`}>
             <li><a href="/#about">About</a></li>
             <li><a href="/#projects">Projects</a></li>
             <li><a href="/#contact">Contact</a></li>
