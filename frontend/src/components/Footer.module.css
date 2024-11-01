@@ -1,26 +1,58 @@
-/* general styling */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: "Poppins", sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-p {
-    color: rgb(85, 85, 85);
-}
-
-/* transition */
-
-a, .btn {
+.footer {
+    height: 26vh;
+    margin: 0 1rem;
+  }
+  
+  .footer p {
+    text-align: center;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 17vh;
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
+  }
+  
+  .navLinks a {
+    color: black;
+    text-decoration: none;
+    text-decoration-color: white;
     transition: all 300ms ease;
-}
+  }
+  
+  .navLinks a:hover {
+    color: grey;
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(181, 181, 181);
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 600px) {
+    .footer {
+      height: 40vh;
+    }
+  
+    .nav {
+      height: fit-content;
+      margin-bottom: 2rem;
+    }
+  
+    .navLinks {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  
+    .navLinks a {
+      font-size: 1rem;
+    }
+  }
