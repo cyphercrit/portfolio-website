@@ -24,7 +24,7 @@ function Header() {
 
   return (
     <>
-      <nav id="desktop-nav" className={styles.desktopNav}>
+      <nav className={styles.desktopNav}>
         <div className={styles.logo}>Caden Jurkovski</div>
         <ul className={styles.navLinks}>
           <li><a href="/#about">About</a></li>
@@ -32,7 +32,7 @@ function Header() {
           <li><a href="/#contact">Contact</a></li>
         </ul>
       </nav>
-      <nav id="hamburger-nav" className={styles.hamburgerNav}>
+      <nav className={styles.hamburgerNav}>
         <div className={styles.logo}>Caden Jurkovski</div>
         <div className={styles.hamburgerMenu}>
           <div className={styles.hamburgerIcon}>
