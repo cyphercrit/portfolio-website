@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 /* Desktop Navigation */
-nav, .nav-links {
+nav, .nav_links {
     display: flex;
 }
 nav {
@@ -8,7 +8,7 @@ nav {
     align-items: center;
     height: 17vh;
 }
-.nav-links {
+.nav_links {
     gap: 2rem;
     list-style: none;
     font-size: 1.5rem;
@@ -31,7 +31,7 @@ a:hover {
     cursor: default;
 }
 /* Hamburger Menu */
-#hamburger-nav {
+.hamburger_nav {
     display: none;
 }
 .hamburger_menu {
@@ -87,10 +87,10 @@ a:hover {
     transform: rotate(-45deg) translate(10px, -5px);
 }
 @media screen and (max-width: 1200px) {
-    #desktop-nav {
+    .desktop_nav {
       display: none;
     }
-    #hamburger-nav {
+    .hamburger_nav {
       display: flex;
     }
 }
