@@ -83,7 +83,7 @@ function Home() {
                   B.S. Computer Science & Mathematics <em>(ongoing)</em>
                   <br /> University of Minnesota - Twin Cities
                   <br />
-                  Sep. 2022 – Dec. 2026
+                  Sep. 2022 – May 2026
                 </p>
               </div>
             </div>
