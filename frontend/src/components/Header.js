@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import './Header.css';
+import styles from './Header.module.css';
 
 function Header() {
   function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
+    const menu = document.querySelector(`.${styles.menu_links}`);
+    const icon = document.querySelector(`.${styles.hamburger_icon}`);
+    menu.classList.toggle(styles.open);
+    icon.classList.toggle(styles.open);
   }
 
   useEffect(() => {
-    const icon = document.querySelector(".hamburger-icon");
+    const icon = document.querySelector(`.${styles.hamburger_icon}`);
     if (icon) {
       icon.addEventListener("click", toggleMenu);
     }
 
-    // Clean up function to remove event listener
     return () => {
       if (icon) {
         icon.removeEventListener("click", toggleMenu);
@@ -26,27 +25,23 @@ function Header() {
   return (
     <>
       <nav id="desktop-nav">
-        <div className="logo">Caden Jurkovski</div>
-        <div>
-          <ul className="nav-links">
-            <li><a href="#about">About</a></li>
-            {/* <li><a href="#experience">Experience</a></li> */}
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+        <div className={styles.logo}>Caden Jurkovski</div>
+        <ul className={styles.nav_links}>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
       <nav id="hamburger-nav">
-        <div className="logo">Caden Jurkovski</div>
-        <div className="hamburger-menu">
-          <div className="hamburger-icon">
+        <div className={styles.logo}>Caden Jurkovski</div>
+        <div className={styles.hamburger_menu}>
+          <div className={styles.hamburger_icon}>
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div className="menu-links">
+          <div className={styles.menu_links}>
             <li><a href="#about">About</a></li>
-            {/* <li><a href="#experience">Experience</a></li> */}
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </div>

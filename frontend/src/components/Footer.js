@@ -1,12 +1,12 @@
 import React from 'react';
-import './Footer.css';
+import styles from './Footer.module.css';
 
 function Footer() {
   return (
-    <footer>
-      <nav>
-        <div className="nav-links-container">
-          <ul className="nav-links">
+    <footer className={styles.footer}>
+      <nav className={styles.nav}>
+        <div className={styles.navLinksContainer}>
+          <ul className={styles.navLinks}>
             <li><a href="#about">About</a></li>
             {/* <li><a href="#experience">Experience</a></li> */}
             <li><a href="#projects">Projects</a></li>
@@ -14,7 +14,9 @@ function Footer() {
           </ul>
         </div>
       </nav>
-      <p>Copyright © 2024 Caden Jurkovski. All Rights Reserved.</p>
+      <p className={styles.copyright}>
+        Copyright © 2024 Caden Jurkovski. All Rights Reserved.
+      </p>
     </footer>
   );
 }
