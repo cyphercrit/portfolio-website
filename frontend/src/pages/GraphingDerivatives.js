@@ -19,7 +19,7 @@ function GraphingDerivatives() {
     calculatorRef.current = Desmos.GraphingCalculator(boardRef.current, {
       keypad: false,
       expressions: false,
-      settingMenu: false,
+      settingsMenu: false,
       zoomButtons: true,
       border: false,
       plotImplicits: true,
