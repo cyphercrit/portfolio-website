@@ -22,7 +22,7 @@ function UrlShortener() {
         setShortenedUrl('Loading...');
 
         try {
-            const response = await fetch('https://short.jurkovski.comshorten', {
+            const response = await fetch('/api/shorten', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
