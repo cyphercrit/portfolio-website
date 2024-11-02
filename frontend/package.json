@@ -7,7 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "desmos": "^1.5.4",
-    "desmos-react": "^1.2.0",
+    "mathquill": "github:luxp/mathquill-webpack",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",

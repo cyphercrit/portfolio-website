@@ -18,6 +18,15 @@
     margin-top: 2.5rem;
 }
 
+.mq-root-block {
+    padding: 0;
+}
+
+.mq-editable-field {
+    display: inline-flex;
+    align-items: center;
+}
+
 .functionDeclRef,
 .inputRef {
     background-color: white;
@@ -37,7 +46,7 @@
     font-size: 1.5rem;
 }
 
-.inputRef {
+.inputRef, .mq-editable-field {
     min-width: 20rem;
 }
 

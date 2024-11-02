@@ -3,6 +3,7 @@ import styles from './GraphingDerivatives.module.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import Desmos from 'desmos';
+import MathQuill from 'mathquill';
 
 function GraphingDerivatives() {
   const functionDeclRef = useRef(null);
@@ -11,9 +12,11 @@ function GraphingDerivatives() {
   const boardRef = useRef(null);
   const original = useRef(null);
   const derivative = useRef(null);
+  const calculatorRef = useRef(null);
+  const mathFieldRef = useRef(null);
 
   useEffect(() => {
-    const calculator = Desmos.GraphingCalculator(boardRef.current, {
+    calculatorRef.current = Desmos.GraphingCalculator(boardRef.current, {
       keypad: false,
       expressions: false,
       settingMenu: false,
@@ -22,7 +25,52 @@ function GraphingDerivatives() {
       plotImplicits: true,
       zoomFit: true,
     });
-    return () => calculator.destroy();
+
+    const MQ = MathQuill.getInterface(2);
+
+    MQ.StaticMath(functionDeclRef.current).latex('f(x)=');
+    MQ.StaticMath(original.current).latex('f(x)\\space\\Longrightarrow\\space');
+    MQ.StaticMath(derivative.current).latex('f\'(x)\\space\\Longrightarrow\\space');
+
+    mathFieldRef.current = MQ.MathField(inputRef.current, {
+      spaceBehavesLikeTab: true,
+      autoCommands: 'pi sqrt',
+      handlers: {
+        enter: () => handleGraphing(),
+      },
+    });
+
+    const parseMathInput = () => {
+      return mathFieldRef.current?.latex() || '';
+    };
+
+    const handleGraphing = () => {
+      const originalFunction = parseMathInput();
+      const firstDerivative = '\\frac{d}{dx}('.concat(originalFunction).concat(')');
+
+      try {
+        calculatorRef.current?.setExpressions([
+          { id: 'firstDerivative', latex: firstDerivative, color: '#ff3333' },
+          { id: 'originalFunction', latex: originalFunction, color: '#33ecff' },
+        ]);
+      } catch (error) {
+        console.error("Error creating graph:", error);
+      }
+    };
+
+    // sets example function
+    mathFieldRef.current.latex("\\sin^2(x)+cos(x)");
+    handleGraphing();
+
+    graphBtnRef.current?.addEventListener('click', handleGraphing);
+
+    const graphBtnC = graphBtnRef.current
+    
+    // cleanup
+    return () => {
+      calculatorRef.current?.destroy();
+      graphBtnC.removeEventListener('click', handleGraphing);
+    }
   }, []);
 
   return (
