@@ -1,18 +1,23 @@
 import express from "express";
+import path from 'path';
+import apiRoute from "./app/api/api.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path'; 
 
-import homeRoute from "./app/routes/home.js"
-import projectsRoute from "./app/routes/projects.js"
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename); // gets the directory name
 
 const app = express();
 const PORT = 8080;
 
-app.use(express.static("public")); // allows public access for css, assets, etc
+app.use(express.json()); // parses json bodies
+app.use("/api", apiRoute);
 
-app.set('view engine', 'ejs'); // sets view engine
-app.set('views', './app/views'); // sets views folder for express
+app.use(express.static(path.join(__dirname, "./frontend/build"))); // serves react build
 
-app.use(homeRoute);
-app.use("/projects", projectsRoute);
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./frontend/build", "index.html")); // redirects non api routes to react
+});
 
 app.listen(PORT, () => {
     console.log(`Website is running on port ${PORT}`)
