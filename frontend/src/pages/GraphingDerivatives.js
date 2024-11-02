@@ -1,61 +1,63 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './GraphingDerivatives.module.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
+import Desmos from 'desmos';
 
 function GraphingDerivatives() {
+  const functionDeclRef = useRef(null);
+  const inputRef = useRef(null);
+  const graphBtnRef = useRef(null);
+  const boardRef = useRef(null);
+  const original = useRef(null);
+  const derivative = useRef(null);
+
+  useEffect(() => {
+    const calculator = Desmos.GraphingCalculator(boardRef.current, {
+      keypad: false,
+      expressions: false,
+      settingMenu: false,
+      zoomButtons: true,
+      border: false,
+      plotImplicits: true,
+      zoomFit: true,
+    });
+    return () => calculator.destroy();
+  }, []);
+
   return (
     <>
-    <div className={styles.pageContainer}>
-    <Header className={styles.mainheader} />
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css"
-      />
-      <title>Graphing Derivatives</title>
-
-      <section className={styles.header}>
-        <div className={styles.title}>
-          <h2>Derivative Grapher</h2>
+    < Header />
+    <section className={styles.title}>
+      <div className={styles.titleMsg}>
+        <h2>Derivative Grapher</h2>
+      </div>
+      <div className={styles.input}>
+        <div ref={functionDeclRef} className={styles.functionDeclRef}>
+          <p><b>f(x)=</b></p>
         </div>
-        <div className={styles.input}>
-          <div className={styles.functionDecl}>
-            <p>
-              <b>f(x)=</b>
-            </p>
-          </div>
-          <span className={styles.mathquillInput} />
-          <button className={`${styles.btn} ${styles.graphBtn}`}>
-            Graph!
-          </button>
+        <span ref={inputRef} className={styles.inputRef}></span>
+        <button className={styles.btn} ref={graphBtnRef}>
+          Graph!
+        </button>
+      </div>
+    </section>
+    <section className={styles.grapher}>
+      <div ref={boardRef} className={styles.board}></div>
+      <div className={styles.legend}>
+        <div className={styles.legendItem}>
+          <span ref={original} className={styles.original}>f(x)-&gt;</span>
+          <span className={styles.colorBox} style={{ backgroundColor: "#33ecff" }} />
         </div>
-      </section>
-
-      <section className={styles.grapher}>
-        <div className={`${styles.board}`} />
-        <div className={styles.legend}>
-          <div className={styles.legendItem}>
-            <span className={styles.original}>f(x)-&gt;</span>
-            <span 
-              className={styles.colorBox} 
-              style={{ backgroundColor: "#33ecff" }} 
-            />
-          </div>
-          <div className={styles.legendItem}>
-            <span className={styles.derivative}>f'(x)-&gt;</span>
-            <span 
-              className={styles.colorBox} 
-              style={{ backgroundColor: "#ff3333" }} 
-            />
-          </div>
+        <div className={styles.legendItem}>
+          <span ref={derivative} className={styles.derivative}>f'(x)-&gt;</span>
+          <span className={styles.colorBox} style={{ backgroundColor: "#ff3333" }} />
         </div>
-      </section>
-      <Footer />
-    </div>
+      </div>
+    </section>
+    < Footer />
     </>
   );
 }
 
-export default GraphingDerivatives;
+export default GraphingDerivatives
