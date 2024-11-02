@@ -16,6 +16,8 @@ function GraphingDerivatives() {
   const mathFieldRef = useRef(null);
 
   useEffect(() => {
+    document.title = 'Graphing Derivatives';
+
     calculatorRef.current = Desmos.GraphingCalculator(boardRef.current, {
       keypad: false,
       expressions: false,
