@@ -3,7 +3,8 @@ import path from 'path';
 import apiRoute from "./app/api/api.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path'; 
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename); // gets the directory name
@@ -14,22 +15,29 @@ const PORT = 8080;
 app.use(express.json()); // parses JSON bodies
 app.use("/api", apiRoute);
 
-// Function to build the React app
+// function to build the React app
 const buildReactApp = () => {
     return new Promise((resolve, reject) => {
-        exec('npm run build --prefix ./frontend', (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error building React app: ${error.message}`);
-                reject(error);
+        const install = spawn('npm', ['install', '--prefix', './frontend']);
+        install.on('close', (code) => {
+            if (code !== 0) {
+                reject(new Error(`npm install failed with code ${code}`));
                 return;
             }
-            if (stderr) {
-                console.error(`Build stderr: ${stderr}`);
-                reject(stderr);
-                return;
-            }
-            console.log(`Build stdout: ${stdout}`);
-            resolve(stdout);
+            const build = spawn('npm', ['run', 'build', '--prefix', './frontend']);
+            build.stdout.on('data', (data) => {
+                console.log(`Build stdout: ${data}`);
+            });
+            build.stderr.on('data', (data) => {
+                console.error(`Build stderr: ${data}`);
+            });
+            build.on('close', (code) => {
+                if (code !== 0) {
+                    reject(new Error(`npm run build failed with code ${code}`));
+                    return;
+                }
+                resolve();
+            });
         });
     });
 };
