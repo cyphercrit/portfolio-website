@@ -1,0 +1,346 @@
+section {
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+.section-container {
+    display: flex;
+}
+
+/* Profile Section */
+
+.profile {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 80vh;
+}
+
+.sectionPicContainer {
+    display: flex;
+    height: 500px;
+    width: 500px;
+    margin: auto 0;
+}
+
+.sectionText {
+    align-self: center;
+    text-align: center;
+}
+
+.sectionText p {
+    font-weight: 600;
+}
+
+.sectionTextP1 {
+    text-align: center;
+    color: rgb(85, 85, 85);
+}
+
+.sectionTextP2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: rgb(85, 85, 85);
+}
+
+.title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.socialsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+/* Buttons */
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    font-weight: 600;
+    transition: all 300ms ease;
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 2rem;
+    border: rgb(53, 53, 53) 0.1rem solid;
+    cursor: pointer;
+}
+
+.btnColor1 {
+    background: rgb(53, 53, 53);
+    color: white;
+}
+
+.btnColor1:hover {
+    background: rgb(0, 0, 0);
+}
+
+.btnColor2 {
+    background: none;
+}
+
+.btnColor2:hover {
+    background: rgb(53, 53, 53);
+    color: white;
+    border: rgb(255, 255, 255) 0.1rem solid;
+}
+
+/* About Section */
+
+.about {
+    position: relative;
+}
+
+.aboutContainers {
+    gap: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.aboutDetailsContainer {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.aboutPic {
+    border-radius: 2rem;
+}
+
+.arrow {
+    position: absolute;
+    right: -5rem;
+    bottom: 2.5rem;
+    cursor: pointer;
+}
+
+.detailsContainer {
+    padding: 1.5rem;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(163, 163, 163) 0.1rem solid;
+    text-align: center;
+    min-width: 25rem;
+}
+
+.detailsContainerInterests {
+    padding: 1.5rem;
+    flex: 1;
+    background: white;
+    border-radius: 2rem;
+    border: rgb(163, 163, 163) 0.1rem solid;
+    text-align: center;
+    min-width: 11rem;
+}
+
+.textContainer {
+    text-align: justify;
+}
+
+.icon {
+    cursor: pointer;
+    height: 2rem;
+}
+
+.aboutIcon {
+    cursor: default;
+}
+
+.interestsIcon {
+    height: 26px;
+}
+
+.sectionContainer {
+    display: flex;
+    gap: 4rem;
+    height: 80%;
+}
+
+.sectionPicContainer {
+    height: 550px;
+    width: 550px;
+    margin: auto 1;
+}
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
+
+/* Projects Section */
+
+.projects {
+    position: relative;
+    padding-top: 4vh;
+    height: 96vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+.colorContainer {
+    border-color: rgb(163, 163, 163);
+    background: rgb(250, 250, 250);
+    max-width: 40%;
+}
+
+.projectImg {
+    border-radius: 2rem;
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.projectImg2 {
+    border-radius: 2rem;
+    max-width: 53%;
+    max-height: 53%;
+}
+
+.projectTitle {
+    margin: 1rem;
+    color: black;
+}
+
+.projectBtn {
+    color: black;
+    border-color: rgb(163, 163, 163);
+}
+
+/* Contact Section */
+
+.contact {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    padding-top: 4vh;
+    margin: 0 10rem;
+    box-sizing: border-box;
+}
+
+.contactInfoUpperContainer {
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    border: rgb(163, 163, 163) 0.1rem solid;
+    background: rgb(250, 250, 250);
+    margin: 2rem auto;
+    padding: 0.5rem;
+}
+
+.contactInfoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem;
+}
+
+.contactInfoContainer p {
+    font-size: larger;
+    color: rgb(85, 85, 85);
+}
+
+.contactIcon {
+    cursor: default;
+}
+
+.emailIcon {
+    height: 2.5rem;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1400px) {
+    .profile {
+        height: 83vh;
+        margin-bottom: 6rem;
+    }
+    .aboutContainers {
+        flex-wrap: wrap;
+    }
+    .contact,
+    .projects {
+        height: fit-content;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .profile,
+    .sectionContainer {
+        display: block;
+    }
+    .arrow {
+        display: none;
+    }
+    .about,
+    .sectionContainer {
+        height: fit-content;
+    }
+    .about,
+    .profile,
+    .projects,
+    .contact {
+        margin: 0 5%;
+    }
+    .sectionPicContainer {
+        width: 275px;
+        height: 275px;
+        margin: 0 auto 2rem;
+    }
+    .aboutContainers {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact {
+        height: 40vh;
+    }
+    .profile {
+        height: 83vh;
+        margin-bottom: 0;
+    }
+    .aboutContainers,
+    .contactInfoUpperContainer,
+    .btnContainer {
+        flex-wrap: wrap;
+    }
+    .contactInfoContainer {
+        margin: 0;
+    }
+    .contactInfoContainer p {
+        font-size: 1rem;
+    }
+    .sectionPicContainer {
+        width: auto;
+        height: 46vw;
+        justify-content: center;
+    }
+    .sectionTextP2 {
+        font-size: 1.25rem;
+    }
+    .title {
+        font-size: 2rem;
+    }
+    .textContainer {
+        text-align: justify;
+    }
+    .detailsContainer,
+    .detailsContainerInterests {
+        min-width: 10rem;
+    }
+}

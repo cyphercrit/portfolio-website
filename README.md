@@ -1,3 +1,3 @@
-# My Portfolio Website
+# My Website
 
-A website housing my portfolio, utilizing ExpressJS, Javascript and HTML/CSS
+My personal website, utilizing a Reactjs frontend and a Expressjs backend.
