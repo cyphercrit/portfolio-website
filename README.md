@@ -1,3 +1,3 @@
 # My Website
 
-My personal website, utilizing a Reactjs frontend and a Expressjs backend.
+My personal website, utilizing a React frontend and a Express backend.

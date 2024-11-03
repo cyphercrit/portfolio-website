@@ -77,10 +77,10 @@ function UrlShortener() {
                         onChange={handleInputChange}
                         required
                     />
+                    </form>
                     <button type="submit" className={styles.shortenBtn} disabled={loading}>
                         Shorten
                     </button>
-                </form>
             </div>
             <div className={styles.outputContainer}>
                 <span className={styles.outputBox}>
