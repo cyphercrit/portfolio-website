@@ -78,7 +78,7 @@ function UrlShortener() {
                         required
                     />
                     </form>
-                    <button type="submit" className={styles.shortenBtn} disabled={loading}>
+                    <button type="submit" className={styles.shortenBtn} disabled={loading} onClick={handleSubmit}>
                         Shorten
                     </button>
             </div>
