@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import styles from './GraphingDerivatives.module.css';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
-import Desmos from 'desmos';
 import MathQuill from 'mathquill';
+import Desmos from 'desmos';
 
 function GraphingDerivatives() {
   const functionDeclRef = useRef(null);

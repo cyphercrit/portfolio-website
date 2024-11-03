@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "desmos": "^1.5.4",
+    "mathquill": "github:Jutanium/mathquill-webpack",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0"
