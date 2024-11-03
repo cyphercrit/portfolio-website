@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './UrlShortener.module.css';
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
+import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 function UrlShortener() {
     const [url, setUrl] = useState('');
