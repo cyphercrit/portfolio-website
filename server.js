@@ -40,11 +40,11 @@ buildReactApp()
         console.log('React app built successfully');
 
         // serves static files from react
-        app.use(express.static(path.join(__dirname, "./frontend/build")));
+        app.use(express.static(path.join(__dirname, "./frontend/dist")));
 
         // handles any requests that dont use the api route
         app.get("*", (req, res) => {
-            res.sendFile(path.join(__dirname, "./frontend/build", "index.html"));
+            res.sendFile(path.join(__dirname, "./frontend/dist", "index.html"));
         });
 
         app.listen(PORT, () => {
