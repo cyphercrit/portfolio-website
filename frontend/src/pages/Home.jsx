@@ -34,7 +34,7 @@ function Home() {
               src="./assets/linkedin.png"
               alt="My LinkedIn Profile"
               className={styles.icon}
-              onClick={() => window.location.href='https://www.linkedin.com/in/caden-jurkovski-944638212/'}
+              onClick={() => window.location.href='https://www.linkedin.com/in/jurkovski'}
             />
             <img
               src="./assets/github.png"
@@ -203,7 +203,7 @@ function Home() {
               className={`${styles.icon} ${styles.contactIcon}`}
             />
             <p>
-              <a href="https://www.linkedin.com/in/caden-jurkovski-944638212">
+              <a href="https://www.linkedin.com/in/jurkovski">
                 LinkedIn
               </a>
             </p>
